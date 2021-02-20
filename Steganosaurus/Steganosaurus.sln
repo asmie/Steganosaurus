@@ -1,17 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Steganosaurus.Core", "src\Steganosaurus.Core\Steganosaurus.Core.csproj", "{1642119A-31C6-4E65-8F51-B195CECD99DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Steganosaurus.Core", "src\Steganosaurus.Core\Steganosaurus.Core.csproj", "{1642119A-31C6-4E65-8F51-B195CECD99DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Steganosaurus.UI", "src\Steganosaurus.UI\Steganosaurus.UI.csproj", "{CB4F832D-A130-4DD7-9418-E1419D2F6BCF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Steganosaurus.UI", "src\Steganosaurus.UI\Steganosaurus.UI.csproj", "{CB4F832D-A130-4DD7-9418-E1419D2F6BCF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Steganosaurus.Droid", "src\Steganosaurus.Droid\Steganosaurus.Droid.csproj", "{1D130ADF-3085-4012-A28C-DB25647B62A5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Steganosaurus.iOS", "src\Steganosaurus.iOS\Steganosaurus.iOS.csproj", "{0DC0DAC6-0EBB-4364-8D61-54D4B0B32E6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Steganosaurus.Core.Test", "test\Steganosaurus.Core.Test\Steganosaurus.Core.Test.csproj", "{14B42097-B8FB-448A-A3B6-E5A31C76CC8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Steganosaurus.Core.Test", "test\Steganosaurus.Core.Test\Steganosaurus.Core.Test.csproj", "{14B42097-B8FB-448A-A3B6-E5A31C76CC8D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Steganosaurus.UI.Test", "test\Steganosaurus.UI.Test\Steganosaurus.UI.Test.csproj", "{95DD5C2B-3F21-4B0A-8751-F57D1B1FE0E9}"
 EndProject
@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "!Solution Items", "!Solutio
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libSteganography", "libSteganography\libSteganography.csproj", "{0DFE2192-A651-4760-9311-600DF99438E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -191,6 +193,30 @@ Global
 		{95DD5C2B-3F21-4B0A-8751-F57D1B1FE0E9}.Release|x64.Build.0 = Release|Any CPU
 		{95DD5C2B-3F21-4B0A-8751-F57D1B1FE0E9}.Release|x86.ActiveCfg = Release|Any CPU
 		{95DD5C2B-3F21-4B0A-8751-F57D1B1FE0E9}.Release|x86.Build.0 = Release|Any CPU
+		{0DFE2192-A651-4760-9311-600DF99438E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DFE2192-A651-4760-9311-600DF99438E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DFE2192-A651-4760-9311-600DF99438E5}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{0DFE2192-A651-4760-9311-600DF99438E5}.Debug|ARM.Build.0 = Debug|Any CPU
+		{0DFE2192-A651-4760-9311-600DF99438E5}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{0DFE2192-A651-4760-9311-600DF99438E5}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{0DFE2192-A651-4760-9311-600DF99438E5}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{0DFE2192-A651-4760-9311-600DF99438E5}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{0DFE2192-A651-4760-9311-600DF99438E5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0DFE2192-A651-4760-9311-600DF99438E5}.Debug|x64.Build.0 = Debug|Any CPU
+		{0DFE2192-A651-4760-9311-600DF99438E5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0DFE2192-A651-4760-9311-600DF99438E5}.Debug|x86.Build.0 = Debug|Any CPU
+		{0DFE2192-A651-4760-9311-600DF99438E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DFE2192-A651-4760-9311-600DF99438E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DFE2192-A651-4760-9311-600DF99438E5}.Release|ARM.ActiveCfg = Release|Any CPU
+		{0DFE2192-A651-4760-9311-600DF99438E5}.Release|ARM.Build.0 = Release|Any CPU
+		{0DFE2192-A651-4760-9311-600DF99438E5}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{0DFE2192-A651-4760-9311-600DF99438E5}.Release|iPhone.Build.0 = Release|Any CPU
+		{0DFE2192-A651-4760-9311-600DF99438E5}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{0DFE2192-A651-4760-9311-600DF99438E5}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{0DFE2192-A651-4760-9311-600DF99438E5}.Release|x64.ActiveCfg = Release|Any CPU
+		{0DFE2192-A651-4760-9311-600DF99438E5}.Release|x64.Build.0 = Release|Any CPU
+		{0DFE2192-A651-4760-9311-600DF99438E5}.Release|x86.ActiveCfg = Release|Any CPU
+		{0DFE2192-A651-4760-9311-600DF99438E5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
