@@ -44,6 +44,7 @@
     <BundleAssemblies>false</BundleAssemblies>
     <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
     <LangVersion>8.0</LangVersion>
+    <MandroidI18n />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -95,7 +96,7 @@
       <Version>7.1.2</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms">
-      <Version>4.8.0.1269</Version>
+      <Version>5.0.0.2012</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
