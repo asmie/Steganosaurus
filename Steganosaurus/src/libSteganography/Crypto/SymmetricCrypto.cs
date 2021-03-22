@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Security.Cryptography;
 using System.Text;
 using System.IO;
@@ -9,9 +10,11 @@ namespace libSteganography.Crypto
     public class SymmetricCrypto
     {
 
+        public enum 
+
         public SymmetricCrypto()
         {
-
+            
         }
 
         public byte[] EncryptText(string plain)
@@ -26,28 +29,25 @@ namespace libSteganography.Crypto
 
             if (plain == null || plain.Length <= 0)
                 throw new ArgumentNullException("plain empty");
-            if (Key == null || (Key.Length != 16 && Key.Length != 32))
+            if (Key == null || Key.Length <= 0)
                 throw new ArgumentNullException("key empty or invalid size");
-            
-            using (SymmetricAlgorithm myAes = new AesCryptoServiceProvider())
+
+            using (var myAlgo = CreateInstance(Algorithm))
             {
-                myAes.Key = Key;
+                myAlgo.Key = Key;
+                myAlgo.Mode = Mode;
+                myAlgo.IV = IV;
 
-                myAes.Mode = CipherMode.CBC;
-                myAes.IV = new byte[16]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+                ICryptoTransform encryptor = myAlgo.CreateEncryptor(myAlgo.Key, myAlgo.IV);
 
-                ICryptoTransform encryptor = myAes.CreateEncryptor(myAes.Key, myAes.IV);
-
-                using (var msEncrypt = new MemoryStream())
+                using var msEncrypt = new MemoryStream();
+                using (var csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
                 {
-                    using (var csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
-                    {
-                        csEncrypt.Write(plain, 0, plain.Length);
-                        csEncrypt.Close();
-                    }
-
-                    encrypted = msEncrypt.ToArray();
+                    csEncrypt.Write(plain, 0, plain.Length);
+                    csEncrypt.Close();
                 }
+
+                encrypted = msEncrypt.ToArray();
             }
 
             return encrypted;
@@ -68,13 +68,14 @@ namespace libSteganography.Crypto
             if (Key == null || Key.Length <= 0)
                 throw new ArgumentNullException("key");
 
-            using (var myAes = new AesCryptoServiceProvider())
+            using (var myAlgo = CreateInstance(Algorithm))
             {
-                myAes.Key = Key;
-                myAes.Mode = CipherMode.CBC;
-                myAes.IV = new byte[16] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+                myAlgo.Key = Key;
+                myAlgo.Mode = Mode;
+                myAlgo.IV = IV;
 
-                ICryptoTransform decryptor = myAes.CreateEncryptor(myAes.Key, myAes.IV);
+
+                ICryptoTransform decryptor = myAlgo.CreateEncryptor(myAlgo.Key, myAlgo.IV);
 
                 using (var msDecrypt = new MemoryStream())
                 {
@@ -96,6 +97,7 @@ namespace libSteganography.Crypto
             get; set;
         } = { 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 };
 
+
         public byte[] Key
         {
             private get;
@@ -108,6 +110,11 @@ namespace libSteganography.Crypto
             set;
         } = { 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 };
 
+        public string Algorithm
+        {
+            get; set;
+        } = "AES";
+
         public CipherMode Mode
         {
             get; set;
@@ -118,6 +125,30 @@ namespace libSteganography.Crypto
             get; set;
         } = PaddingMode.PKCS7;
 
+
+
+        public static SymmetricAlgorithm CreateInstance(string name)
+        {
+            foreach (Tuple<string, Type> x in _registeredAlgorithms)
+            {
+                if (x.Item1 == name)
+                    return (SymmetricAlgorithm)Activator.CreateInstance(x.Item2);
+            }
+
+            return null;
+        }
+
+        public static bool RegisterAlgorithm(string name, Type creator)
+        {
+            _registeredAlgorithms.Add(new Tuple<string, Type>(name, creator));
+            return true;
+        }
+
+        private static List<Tuple<string, Type>> _registeredAlgorithms = new List<Tuple<string, Type>>
+                (new[] {
+            new Tuple<string, Type>( "AES", typeof(AesCryptoServiceProvider)),
+            new Tuple<string, Type>( "Rijandel", typeof(RijndaelManaged)),
+        });
 
     }
 }
