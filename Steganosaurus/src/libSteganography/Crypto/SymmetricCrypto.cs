@@ -11,7 +11,7 @@ namespace libSteganography.Crypto
     /// encrypting and decrypting real data.
     /// Keys are stored in the way that user give them.
     /// </summary>
-    public class SymmetricCrypto
+    public sealed class SymmetricCrypto
     {
         /// <summary>
         /// Enumerates possible key types.
