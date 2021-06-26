@@ -87,13 +87,13 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MvvmCross">
-      <Version>7.1.2</Version>
+      <Version>8.0.1</Version>
     </PackageReference>
     <PackageReference Include="MvvmCross.DroidX.Material">
-      <Version>7.1.2</Version>
+      <Version>8.0.1</Version>
     </PackageReference>
     <PackageReference Include="MvvmCross.Forms">
-      <Version>7.1.2</Version>
+      <Version>8.0.1</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms">
       <Version>5.0.0.2012</Version>
